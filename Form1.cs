@@ -8,21 +8,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace DownloadCleanerV2
 {
     public partial class Form1 : Form
     {
+        private Cleaner cleaner;
+
         public Form1()
         {
             InitializeComponent();
+            cleaner = new Cleaner();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            cbox_StartUp.Checked = Properties.Settings.Default.cbox_startupState;
+            if (cbox_StartUp.Checked)
+            {
+                lbl_StatusMsg.Text = "Cleaning...";
+                cleaner.StartCleaning();
+                lbl_StatusMsg.Text = "Finished Cleaning";
+            }
+
         }
         private void btn_StartCleaning_Click(object sender, EventArgs e)
         {
             lbl_StatusMsg.Text = "Cleaning...";
-            Cleaner cleaner = new Cleaner();
-            cleaner.StartCleaning();
+            this.cleaner.StartCleaning();
             lbl_StatusMsg.Text = "Finished Cleaning";
+        }
+        private void cbox_StartUp_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.cbox_startupState = cbox_StartUp.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }
