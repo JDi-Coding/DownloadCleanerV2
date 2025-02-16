@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +14,6 @@ namespace DownloadCleanerV2.assets
         public Cleaner()
         {
             DownloadFolderPath = SetDownloadFolderPath();
-            CreateFolders(DownloadFolderPath);
-
-            Files = GetFiles(DownloadFolderPath);
-            Folders = GetFolders(DownloadFolderPath);
-
             _FolderNames = new string[] {
                 "Images", "Video",
                 "Audio",  "Zips",
@@ -25,15 +21,41 @@ namespace DownloadCleanerV2.assets
                 "Sys-Image", "Code",
                 "Ohter"
             };
-            _FolderNames = FolderNames;
+            CreateFolders(DownloadFolderPath, _FolderNames);
+
+            Files = GetFiles(DownloadFolderPath);
+            Folders = GetFolders(DownloadFolderPath);
+
+
         }
 
         public void StartCleaning()
         {
             foreach (string File in Files)
             {
-           
-                DecideFolder(File);
+                //should be D:/Downloads/FileName.Extension
+                string fExt = System.IO.Path.GetExtension(File);
+
+                MoveFile(File, DecideFolder(fExt));
+            }
+        }
+
+        private void MoveFile(string File, string Folder)
+        {
+            try
+            {
+                if (System.IO.File.Exists(File))
+                {
+                    string DestinationPath = DownloadFolderPath + Folder + "\\" + System.IO.Path.GetFileName(File);
+                    if(!System.IO.File.Exists(DestinationPath))
+                    {
+                        System.IO.File.Move(File, DestinationPath);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error in Moving File");
             }
         }
     }

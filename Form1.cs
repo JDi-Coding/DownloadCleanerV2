@@ -19,7 +19,8 @@ namespace DownloadCleanerV2
         }
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Cleaner cleaner = new Cleaner();
+            cleaner.StartCleaning();
         }
     }
 }

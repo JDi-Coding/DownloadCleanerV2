@@ -13,12 +13,6 @@ namespace DownloadCleanerV2.assets
     {
         public string[] _FolderNames; //Array of Folder Names
 
-        protected string[] FolderNames
-        {
-            get { return FolderNames; }
-            set { FolderNames = value; }
-        }
-
         /// <summary>
         /// Constructor <c> Folders </c> initializes the array of folder names.
         /// </summary>
@@ -42,7 +36,7 @@ namespace DownloadCleanerV2.assets
         {
             try
             {
-                //Range 0..7
+                //Range 0..8
                 return _FolderNames[Index];
             }
             catch (Exception)
@@ -56,9 +50,9 @@ namespace DownloadCleanerV2.assets
         /// Method <c> CreateFolders </c> creates the folders in the given path.
         /// </summary>
         /// <param name="path"></param>
-        public void CreateFolders(string path)
+        public void CreateFolders(string path, string[] Folders)
         {
-            foreach (string Folder in _FolderNames)
+            foreach (string Folder in Folders)
             {
                 bool exists = System.IO.Directory.Exists(path + Folder);
                 if (!exists)
