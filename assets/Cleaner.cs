@@ -22,13 +22,11 @@ namespace DownloadCleanerV2.assets
                 "Ohter"
             };
             CreateFolders(DownloadFolderPath, _FolderNames);
-
-            Files = GetFiles(DownloadFolderPath);
-            Folders = GetFolders(DownloadFolderPath);
         }
-
         public void StartCleaning()
         {
+            Files = GetFiles(DownloadFolderPath);
+            Folders = GetFolders(DownloadFolderPath);
             foreach (string File in Files)
             {
                 //should be D:/Downloads/FileName.Extension
@@ -49,7 +47,7 @@ namespace DownloadCleanerV2.assets
             {
                 if (System.IO.File.Exists(File))
                 {
-                    string DestinationPath = DownloadFolderPath + Folder + "\\" + System.IO.Path.GetFileName(File);
+                    string DestinationPath = DownloadFolderPath + "\\"+ Folder + "\\" + System.IO.Path.GetFileName(File);
                     if(!System.IO.File.Exists(DestinationPath))
                     {
                         System.IO.File.Move(File, DestinationPath);
