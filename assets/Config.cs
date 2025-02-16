@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,9 +32,8 @@ namespace DownloadCleanerV2.assets
         /// <returns></returns>
         public static string SetDownloadFolderPath()
         {
-            // TODO: here later set the download folder path
-            // based on the User Input or Default Path
-            return @"E:\Downloads\";
+            //get the Users Download Folder Path
+            return Registry.GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders", "{374DE290-123F-4565-9164-39C4925E467B}", String.Empty).ToString();
         }
 
         /// <summary>
@@ -55,8 +55,5 @@ namespace DownloadCleanerV2.assets
         {
             return System.IO.Directory.GetDirectories(path);
         }
-
-
-
     }
 }
