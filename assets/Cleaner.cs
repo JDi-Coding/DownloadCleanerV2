@@ -25,8 +25,6 @@ namespace DownloadCleanerV2.assets
 
             Files = GetFiles(DownloadFolderPath);
             Folders = GetFolders(DownloadFolderPath);
-
-
         }
 
         public void StartCleaning()
@@ -40,6 +38,11 @@ namespace DownloadCleanerV2.assets
             }
         }
 
+        /// <summary>
+        /// Method <c> DecideFolder </c> returns the folder name based on the file extension.
+        /// </summary>
+        /// <param name="File"></param>
+        /// <param name="Folder"></param>
         private void MoveFile(string File, string Folder)
         {
             try

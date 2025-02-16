@@ -17,10 +17,12 @@ namespace DownloadCleanerV2
         {
             InitializeComponent();
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_StartCleaning_Click(object sender, EventArgs e)
         {
+            lbl_StatusMsg.Text = "Cleaning...";
             Cleaner cleaner = new Cleaner();
             cleaner.StartCleaning();
+            lbl_StatusMsg.Text = "Finished Cleaning";
         }
     }
 }
