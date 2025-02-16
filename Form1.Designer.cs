@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btn_StartCleaning = new System.Windows.Forms.Button();
             this.lbl_Status = new System.Windows.Forms.Label();
             this.lbl_StatusMsg = new System.Windows.Forms.Label();
@@ -105,6 +106,7 @@
             this.Controls.Add(this.lbl_StatusMsg);
             this.Controls.Add(this.lbl_Status);
             this.Controls.Add(this.btn_StartCleaning);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "Form1";
