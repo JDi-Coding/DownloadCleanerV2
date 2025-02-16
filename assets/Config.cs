@@ -11,22 +11,24 @@ namespace DownloadCleanerV2.assets
     /// 
     /// Here we have the "DownloadFolderPath", Files and Folders Location.
     /// </summary>
-    public class Config
+    public class Config : Folders
     {
+        public static string DownloadFolderPath;
 
-        public static string DownloadFolderPath = @"E:\Downloads\";
+        /// <summary>
+        /// Files is an array of strings that contains the list of files in the DownloadFolderPath.
+        /// </summary>
+        protected string[] Files;
 
-        private string[] Files;
+        /// <summary>
+        /// Folders is an array of strings that contains the list of folders in the DownloadFolderPath.
+        /// </summary>
+        protected string[] Folders;
 
-        private string[] Folders;
-
-        public Config()
-        {
-            DownloadFolderPath = SetDownloadFolderPath(); 
-            Files = GetFiles(DownloadFolderPath);
-            Folders = GetFolders(DownloadFolderPath);
-        }
-
+        /// <summary>
+        /// Method <c> SetDownloadFolderPath </c> returns the path of the download folder.
+        /// </summary>
+        /// <returns></returns>
         public static string SetDownloadFolderPath()
         {
             // TODO: here later set the download folder path
@@ -34,15 +36,26 @@ namespace DownloadCleanerV2.assets
             return @"E:\Downloads\";
         }
 
-        public static string[] GetFiles(string path)
+        /// <summary>
+        /// Method <c> GetFiles </c> returns the list of files in the given path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        protected static string[] GetFiles(string path)
         {
             return System.IO.Directory.GetFiles(path);
         }
 
-        public static string[] GetFolders(string path)
+        /// <summary>
+        /// Method <c> GetFolders </c> returns the list of folders in the given path.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        protected static string[] GetFolders(string path)
         {
             return System.IO.Directory.GetDirectories(path);
         }
+
 
 
     }

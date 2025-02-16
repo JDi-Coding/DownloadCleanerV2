@@ -19,16 +19,6 @@ namespace DownloadCleanerV2
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] Files = Cleaner.GetFiles(@"E:\Downloads\");
-            foreach (string File in Files)
-            {
-                textBox1.Text += File + Environment.NewLine;
-            }
-            string[] Folders = Cleaner.GetFolders(@"E:\Downloads\");
-            foreach (string Folder in Folders)
-            {
-                textBox2.Text += Folder + Environment.NewLine;
-            }
 
         }
     }

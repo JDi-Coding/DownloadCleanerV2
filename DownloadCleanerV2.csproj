@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="assets\Cleaner.cs" />
     <Compile Include="assets\Config.cs" />
+    <Compile Include="assets\Folders.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
